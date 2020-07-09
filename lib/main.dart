@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -24,11 +24,12 @@ class MyApp extends StatelessWidget {
 class MyPainter extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size) {
-//    final myPaint = Paint(),
+
 
     canvas.drawLine(Offset(175,175), Offset(350,350), Paint());
     canvas.drawCircle(Offset(75,75), 20, Paint());
     canvas.drawRect(Rect.fromPoints(Offset(200,200), Offset(150,150)), Paint());
+
   }
 
   @override
