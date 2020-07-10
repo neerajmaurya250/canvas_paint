@@ -12,9 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
 
       home: Scaffold(
-        body: CustomPaint(
-          painter: MyPainter(),
-          size: Size(200,100),
+        body: Center(
+          child: CustomPaint(
+            painter: MyPainter(),
+            size: Size(200,100),
+          ),
         ),
       ),
     );
@@ -25,11 +27,15 @@ class MyPainter extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size) {
 
-
-    canvas.drawLine(Offset(175,175), Offset(350,350), Paint());
-    canvas.drawCircle(Offset(75,75), 20, Paint());
-    canvas.drawRect(Rect.fromPoints(Offset(200,200), Offset(150,150)), Paint());
-
+    final center = Offset(size.width / 2,size.height / 2);
+    final paint = Paint()..color = Colors.yellow;
+    canvas.drawCircle(center, 200, paint);
+    final smile = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 20;
+    canvas.drawArc(Rect.fromCircle(center: center,radius: 150), 0.32, 2.5, false, smile);
+    canvas.drawCircle(Offset(center.dx - 150/2, center.dy - 150/2), 20, Paint());
+    canvas.drawCircle(Offset(center.dx + 150/2, center.dy - 150/2), 20, Paint());
   }
 
   @override
