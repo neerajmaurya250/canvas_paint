@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/smiley.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    title: 'Navigation Basics',
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -9,37 +14,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-
       home: Scaffold(
         body: Center(
-          child: CustomPaint(
-            painter: MyPainter(),
-            size: Size(200,100),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Smiley()));
+                },
+                child: Text('Next'),
+              )
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-class MyPainter extends CustomPainter{
-  @override
-  void paint(Canvas canvas, Size size) {
-
-    final center = Offset(size.width / 2,size.height / 2);
-    final paint = Paint()..color = Colors.yellow;
-    canvas.drawCircle(center, 200, paint);
-    final smile = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 20;
-    canvas.drawArc(Rect.fromCircle(center: center,radius: 150), 0.32, 2.5, false, smile);
-    canvas.drawCircle(Offset(center.dx - 150/2, center.dy - 150/2), 20, Paint());
-    canvas.drawCircle(Offset(center.dx + 150/2, center.dy - 150/2), 20, Paint());
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate)=>false;
-
-}
-

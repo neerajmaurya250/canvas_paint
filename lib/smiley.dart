@@ -1,24 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-void main() {
-  runApp(MyApp());
-}
+import 'package:untitled/circles.dart';
 
-class MyApp extends StatelessWidget {
+class Smiley extends StatefulWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+  _SmileyState createState() => _SmileyState();
+}
 
-      home: Scaffold(
+class _SmileyState extends State<Smiley> {
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
         body: Center(
-          child: CustomPaint(
-            painter: MyPainter(),
-            size: Size(200,100),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FittedBox(
+                child: SizedBox(
+                  height: 500,
+                  width: 400,
+                  child: CustomPaint(
+                    painter: MyPainter(),
+                  ),
+                ),
+              ),
+              RaisedButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Circle()));
+                },
+                child: Text('Next'),
+              )
+            ],
           ),
         ),
-      ),
     );
   }
 }
