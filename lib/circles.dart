@@ -6,10 +6,21 @@ class Circle extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: Center(
-            child: CustomPaint(
-              painter: MyCircle(),
-            ),
+          child: Stack(
+            children: <Widget>[
+              Center(
+                child: CustomPaint(
+                  painter: MyCircle(),
+                ),
+              ),
+              Column(
+                children: <Widget>[
+                  Form(
+                    child: TextFormField(),
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ),
